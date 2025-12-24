@@ -1,3 +1,51 @@
+
+
+# YARGI MCP SERVER – AYAĞA KALDIRMA KILAVUZU
+### Bu MCP server:
+- Browser client’ı hedeflemez
+- REST API değildir
+- fetch / axios / Postman ile çağrılmaz
+- Claude Desktop, MCP-aware agent’lar ve AI toolchain’ler içindir
+
+### 0) Gereksinimler
+- Python 3.11 veya üzeri
+- python / python3 ve pip / pip3 aynı environment’ı kullanmalı
+
+## ADIMLAR
+
+`python3 --version`
+
+### 1) Repo dizinine gir
+`cd yargi-mcp-FYork-main`
+
+### 2) Editable install (ASGI extras ile)
+NOT: .[asgi] mutlaka çift tırnak içinde olmalı
+`python3 -m pip install -e ".[asgi]"`
+
+### 3) fastmcp versiyonunu sabitle
+`python3 -m pip uninstall fastmcp -y`
+`python3 -m pip install "fastmcp==2.10.5"`
+
+### 4) pydantic uyumluluğunu düzelt
+`python3 -m pip uninstall pydantic pydantic-core -y`
+`python3 -m pip install "pydantic==2.10.6"`
+
+### 5) MCP Server’ı ayağa kaldır
+`python3 run_asgi.py`
+
+### Başarılı çalıştığında aşağıdakiler görünür:
+
+- Uvicorn running on http://127.0.0.1:8000
+- MCP endpoint: http://127.0.0.1:8000/mcp/
+- Health check: http://127.0.0.1:8000/health
+- API status: http://127.0.0.1:8000/status
+
+<br/>
+<br/>
+<br/>
+
+
+
 # Yargı MCP: Türk Hukuk Kaynakları için MCP Sunucusu
 
 [![Star History Chart](https://api.star-history.com/svg?repos=saidsurucu/yargi-mcp&type=Date)](https://www.star-history.com/#saidsurucu/yargi-mcp&Date)
